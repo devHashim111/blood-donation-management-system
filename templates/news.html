@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12">
+            {% for item in news %}
+            <div class="card shadow-lg p-4 mb-4">
+                <h2 class="text-danger fw-bold">{{ item.title }}</h2>
+               
+                <p class="text-secondary">
+                    {{ item.detail|safe }}
+                </p>
+                <a href="{% url "donate" %}" class="btn btn-danger mt-3">Donate</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

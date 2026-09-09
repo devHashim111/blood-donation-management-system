@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Urgent Blood Requirements</h2>
+
+    <div class="row">
+        {% for case in unsolved_cases %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    Unsolved
+                </div>
+                <div class="card-body">
+                    <p><strong>Blood Group:</strong> {{ case.blood_group }}</p>
+                    <p><strong>Case:</strong> {{ case.disease }}</p>
+                    <p><strong>Location:</strong> {{ case.location }}</p>
+                    <p><strong>Hospital:</strong> {{ case.hospital }}</p>
+                    <p><strong>Time Limit:</strong> {{ case.time_limit|date:"d M Y, h:i A" }}</p>
+                    <p><strong>Patient Name:</strong> {{ case.attendant_name }}</p>
+                    <a class="text-danger" style="text-decoration:none;" href="tel:{{ case.contact }}">
+                        <strong>Contact:</strong> {{ case.contact }}
+                    </a>
+                    {% if case.pick_drop_service %}
+                    <p class="text-info mt-2"><strong>Pick & Drop:</strong> Available</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-muted">No urgent blood requests at the moment.</p>
+        {% endfor %}
+    </div>
+
+    <h2 class="text-center mt-5 mb-4">Resolved Blood Requests</h2>
+    
+    <div class="row">
+        {% for case in solved_cases %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Solved
+                </div>
+                <div class="card-body">
+                    <p><strong>Blood Group:</strong> {{ case.blood_group }}</p>
+                    <p><strong>Case:</strong> {{ case.disease }}</p>
+                    <p><strong>Location:</strong> {{ case.location }}</p>
+                    <p><strong>Date:</strong> {{ case.created_at|date:"d M Y" }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-muted">No solved cases available.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

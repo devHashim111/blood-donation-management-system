@@ -1,0 +1,5 @@
+Django==4.2.11
+django-tinymce
+pillow==10.2.0
+decouple
+
