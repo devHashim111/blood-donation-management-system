@@ -62,8 +62,8 @@ Edit
 ### Installation & Setup
 
 ```bash
-git clone <your-repo-url>
-cd <your-project-folder>
+git clone https://github.com/devHashim111/blood-donation-management-system
+cd blood-donation-management-system
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -73,8 +73,7 @@ Set environment variables (e.g., in .env file):
 env
 Copy
 Edit
-SECRET_KEY=your_secret_key
-DEBUG=False
+
 DATABASE_URL=your_database_connection_url
 Apply migrations:
 
